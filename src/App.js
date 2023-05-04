@@ -1,9 +1,13 @@
 import {useState} from "react";
 import {useForm, Controller} from "react-hook-form";
 import Header from "./components/Header";
-import ReactDatePicker from "react-datepicker"
+import ReactDatePicker, { registerLocale } from "react-datepicker"
+import ru from 'date-fns/locale/ru'
 import React from "react";
 import "react-datepicker/dist/react-datepicker.css";
+
+
+registerLocale('ru', ru)
 
 
 export function App() {
@@ -11,8 +15,16 @@ export function App() {
     const [data, setData] = useState("");
 
     const onSubmit = (data) => {
-        console.log(JSON.stringify(data));
-    };
+        const updateData = {
+            ...data,
+            date: data.date.toString()
+        }
+        console.log(JSON.stringify(updateData));
+    }
+
+    const onReset = () => {
+        reset()
+    }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -70,12 +82,14 @@ export function App() {
                 <Controller
                     control={control}
                     name="date"
-                    render={({ field }) => (
+                    render={({field}) => (
                         <ReactDatePicker {...register("date", {required: true})}
-                            className="input"
-                            placeholderText="Выберите дату"
-                            onChange={(e) => field.onChange(e)}
-                            selected={field.value}
+                                         className="input"
+                                         placeholderText="Выберите дату"
+                                         onChange={(data) => field.onChange(data)}
+                                         selected={field.value}
+                                         locale='ru'
+
                         />
                     )}
                 />
@@ -83,7 +97,8 @@ export function App() {
 
             <textarea {...register("info")} placeholder="Введите комментарий"/>
             <p>{data}</p>
-            <input type="submit"/>
+            <button type="submit" className='button'> ОТПРАВИТЬ</button>
+            <button onClick={onReset}> ОЧИСТИТЬ</button>
         </form>
     );
 }
