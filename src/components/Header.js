@@ -3,11 +3,11 @@ import React from "react";
 export default () => {
 
     return (
-        <div style={{ marginBottom: 10 }}>
+        <div style={{ marginBottom: 2, fontSize: 15 }}>
             <h1 className="h1">
-                Быстрое бронирование
+                Бронирование переговорной комнаты
             </h1>
-            <p style={{ fontSize: 14, lineHeight: 1.3, marginBottom: 0 }}>
+            <p style={{ fontSize: 15, lineHeight: 1.3, marginBottom: 0 }}>
                 Быстрая, адаптивная и расщирямая форма.
             </p>
         </div>
