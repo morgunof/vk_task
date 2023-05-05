@@ -57,7 +57,7 @@ export function App() {
                     <Select {...register("tower", {required: true})}
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                        //value={age}
+                            //value={tower}
                             label="Выберите башню"
                         // onChange={handleSubmit}
                             multiline
@@ -200,7 +200,7 @@ export function App() {
                 />
 
                 <Button
-                    sx={{display: "flex", flexDirection: 'column', width: 300, marginTop: 1}}
+                    sx={{display: "flex", flexDirection: 'column', width: 300, marginTop: 1, backgroundColor: '#0077FF'}}
                     type="submit"
                     variant="contained">ОТПРАВИТЬ</Button>
 
