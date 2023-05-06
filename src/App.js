@@ -17,9 +17,6 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import {format} from "date-fns";
 
-
-registerLocale('ru', ru)
-
 const floorData = Array.from({length: 25}, (_, index) => index + 3)
 const roomData = Array.from({length: 10}, (_, index) => index + 1)
 
