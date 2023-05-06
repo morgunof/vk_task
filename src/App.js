@@ -21,6 +21,7 @@ import {format} from "date-fns";
 registerLocale('ru', ru)
 
 const floorData = Array.from({length: 25}, (_, index) => index + 3)
+const roomData = Array.from({length: 10}, (_, index) => index + 1)
 
 
 export function App() {
@@ -125,16 +126,11 @@ export function App() {
                                 onChange={onChange}
                                 multiline
                             >
-                                <MenuItem value='1'>Комната 1</MenuItem>
-                                <MenuItem value='2'>Комната 2</MenuItem>
-                                <MenuItem value='3'>Комната 3</MenuItem>
-                                <MenuItem value='4'>Комната 4</MenuItem>
-                                <MenuItem value='5'>Комната 5</MenuItem>
-                                <MenuItem value='6'>Комната 6</MenuItem>
-                                <MenuItem value='7'>Комната 7</MenuItem>
-                                <MenuItem value='8'>Комната 8</MenuItem>
-                                <MenuItem value='9'>Комната 9</MenuItem>
-                                <MenuItem value='10'>Комната 10</MenuItem>
+                                {
+                                    roomData.map(floor => (
+                                        <MenuItem value={floor}>Комната {floor}</MenuItem>
+                                    ))
+                                }
                             </Select>
                         )}/>
                 </FormControl>
@@ -167,6 +163,7 @@ export function App() {
                 />)}/>
 
                 <Button
+                    variant="contained"
                     type="submit"
                     sx={{
                         display: "flex",
@@ -175,7 +172,7 @@ export function App() {
                         marginTop: 1,
                         backgroundColor: '#0077FF'
                     }}
-                    variant="contained">ОТПРАВИТЬ</Button>
+                    >ОТПРАВИТЬ</Button>
 
                 <Button onClick={onReset}
                         sx={{display: "flex", flexDirection: 'column', width: 300, marginTop: 1}}>ОЧИСТИТЬ</Button>
